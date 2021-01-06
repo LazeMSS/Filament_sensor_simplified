@@ -27,7 +27,7 @@ $(function () {
 
         self.testSensor = function () {
             // Cleanup
-            $("#filamentsensorsimplified_settings_testResult").removeClass("text-warning text-error text-info text-success");
+            $("#filamentsensorsimplified_settings_testResult").removeClass();
             // Make api callback
             $.ajax({
                     url: "/api/plugin/filamentsensorsimplified",
@@ -63,10 +63,10 @@ $(function () {
                     success: function (result) {
                         if (result.triggered === true) {
                             $("#filamentsensorsimplified_settings_testResult").addClass("text-success");
-                            self.testSensorResult('<i class="fas icon-ok fa-check"></i> Sensor detected filament!');
+                            self.testSensorResult('<i class="fas icon-ok fa-check"></i> Sensor working - filament detected!');
                         } else {
-                            $("#filamentsensorsimplified_settings_testResult").addClass("text-info");
-                            self.testSensorResult('<i class="fas icon-plus fa-toggle-off"></i> Sensor triggered!')
+                            $("#filamentsensorsimplified_settings_testResult").addClass("text-warning");
+                            self.testSensorResult('<i class="fas icon-plus fa-toggle-off"></i> Sensor working - but no filament detected!')
                         }
                     }
                 }
